@@ -1,4 +1,4 @@
-FROM python:2 as base
+FROM python:2-slim as base
 # source repo: https://github.com/docker-library/python
 # git branch py2-branch ab8db2f^ && git co py2-branch
 # based on Debian 10.3 (Buster)
@@ -10,6 +10,7 @@ RUN set -eux \
   && apt-get -y update \
   && apt-get -y upgrade \
   && apt-get -y clean \
+  && rm -rf /var/lib/apt \
   && pip --no-python-version-warning \
          --disable-pip-version-check \
 	 --no-cache-dir list --outdated \
